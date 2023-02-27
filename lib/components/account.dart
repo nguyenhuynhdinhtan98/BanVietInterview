@@ -48,7 +48,7 @@ class _Account extends State<Account> {
             ),
           ),
           Container(
-            height: 120,
+            height: 125,
             child: PageView.builder(
                 itemCount: accounts.length,
                 scrollDirection: Axis.horizontal,
@@ -68,7 +68,7 @@ class _Account extends State<Account> {
   }
 
   AnimatedContainer slider(pagePosition, active) {
-    double margin = active ?  5 : 10;
+    double margin = active ?  6 : 12;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOutCubic,
