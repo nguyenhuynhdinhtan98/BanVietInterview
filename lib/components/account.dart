@@ -14,7 +14,7 @@ class _Account extends State<Account> {
   int _currentAccount = 0;
   bool _accountBalanceDisplay = false;
 
-  final PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(viewportFraction: 0.9,initialPage: 1);
 
   _onPageChanged(int index) {
     setState(() {
@@ -28,14 +28,14 @@ class _Account extends State<Account> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: primary,
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 5),
+            padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -47,18 +47,37 @@ class _Account extends State<Account> {
               ],
             ),
           ),
-         Container(
-              height: 110,
-              child: PageView.builder(
+          Container(
+            height: 120,
+            child: PageView.builder(
                 itemCount: accounts.length,
                 scrollDirection: Axis.horizontal,
                 controller: _pageController,
+                pageSnapping: true,
                 onPageChanged: _onPageChanged,
-                itemBuilder: (context, index) => AccountItem(accounts[index],_accountBalanceDisplay,_onBlanceHide),
-              ),
+                itemBuilder: (context, pagePosition) {
+                  bool active = pagePosition == _currentAccount;
+                  return Container(
+                    child: slider(pagePosition,active)
+                  );
+                }),
           ),
         ],
       ),
+    );
+  }
+
+  AnimatedContainer slider(pagePosition, active) {
+    double margin = active ?  5 : 10;
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOutCubic,
+      margin: EdgeInsets.all(margin),
+      child: Container(
+        child: AccountItem(accounts[pagePosition],
+            _accountBalanceDisplay, _onBlanceHide),
+      ),
+
     );
   }
 }

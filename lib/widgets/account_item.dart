@@ -19,16 +19,14 @@ class AccountItem extends StatefulWidget {
 class _AccountItemState extends State<AccountItem> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
-      child: Container(
+    return Container(
         decoration: BoxDecoration(
           color: primary,
           border: Border.all(color: outlineBlue),
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Padding(
               padding: const EdgeInsets.only(
@@ -90,7 +88,7 @@ class _AccountItemState extends State<AccountItem> {
                       onPressed: () =>
                           widget.onBlanceHide(!widget.accountBalanceDisplay),
                       icon: Icon(
-                        Icons.remove_red_eye_outlined,
+                        widget.accountBalanceDisplay ? Icons.remove_red_eye : Icons.remove_red_eye_outlined,
                         size: 26,
                         color: Colors.white,
                       )),
@@ -99,7 +97,6 @@ class _AccountItemState extends State<AccountItem> {
             ),
           ],
         ),
-      ),
     );
   }
 }

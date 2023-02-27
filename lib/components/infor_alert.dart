@@ -18,60 +18,61 @@ class _InforAlertState extends State<InforAlert> {
         child: Container(
           decoration: BoxDecoration(
             color: secondary,
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: BorderRadius.circular(20.0),
           ),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 2, horizontal: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children:  [
-                    Flexible(
-                      child: Text("Hoá đơn học phí tháng 2/2023",
-                          style: TextStyle(
-                            color: grey,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                    IconButton(
+          child: Container(
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children:  [
+                      Flexible(
+                        child: Text("Hoá đơn học phí tháng 2/2023",
+                            style: TextStyle(
+                              color: grey,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                      IconButton(
                         splashColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         icon: Icon(
                           Icons.clear,
-                          size: 38,
+                          size: 36,
                           color: grey,
                         ),
                         onPressed: () =>  widget.onHideAlertWidget(),
-                    )
-                  ],
-                ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Flexible(
+                        child: Text("900.000 VND",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                      Flexible(
+                        child: Text("Thanh toán ngay",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                            )),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Flexible(
-                      child: Text("900.000 VND",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ),
-                    Flexible(
-                      child: Text("Thanh toán ngay",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                          )),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ));
+            ),
+          )
+        )
+    );
   }
 }

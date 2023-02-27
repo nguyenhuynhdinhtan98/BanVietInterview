@@ -12,12 +12,18 @@ class RootApp extends StatefulWidget {
 class _RootAppState extends State<RootApp> {
   int pageIndex = 0;
 
+  void onTabTapped(index) {
+    setState(() {
+      pageIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: white,
-        // bottomNavigationBar: getFooter(),
-        body: getBody()
+      backgroundColor: primary,
+      body: getBody(),
+      bottomNavigationBar: getFooter(),
     );
   }
 
@@ -27,58 +33,66 @@ class _RootAppState extends State<RootApp> {
       children: [
         DashBoardPage(),
         Center(
-          child: Text("Chat Page",style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold
-          ),),
+          child: Text(
+            "Saving",
+            style: TextStyle(fontSize: 20, color: white),
+          ),
         ),
         Center(
-          child: Text("Notification Page",style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold
-          ),),
+          child: Text(
+            "Invoice",
+            style: TextStyle(fontSize: 20, color: white),
+          ),
         ),
         Center(
-          child: Text("Account Page",style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold
-          ),),
-        ),
-        Center(
-          child: Text("Card Page",style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold
-          ),),
+          child: Text(
+            "Setting",
+            style: TextStyle(fontSize: 20, color: white),
+          ),
         ),
       ],
     );
   }
 
-  // Widget getFooter() {
-  //   List<IconData> iconItems = [
-  //     MaterialCommunityIcons.view_grid,
-  //     MaterialCommunityIcons.comment,
-  //     MaterialCommunityIcons.bell,
-  //     MaterialCommunityIcons.account_circle,
-  //   ];
-  //
-  //   return AnimatedBottomNavigationBar(
-  //     activeColor: primary,
-  //     splashColor: secondary,
-  //     inactiveColor: Colors.black.withOpacity(0.5),
-  //     icons: iconItems,
-  //     activeIndex: pageIndex,
-  //     gapLocation: GapLocation.center,
-  //     notchSmoothness: NotchSmoothness.softEdge,
-  //     leftCornerRadius: 10,
-  //     iconSize: 25,
-  //     rightCornerRadius: 10,
-  //     onTap: (index) {
-  //       selectedTab(index);
-  //     },
-  //     //other params
-  //   );
-  // }
+  Widget getFooter() {
+    return BottomNavigationBar(
+      backgroundColor: primary,
+      selectedItemColor: white,
+      unselectedItemColor: secondary,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      elevation: 0,
+      onTap: onTabTapped,
+      currentIndex: pageIndex,
+      type: BottomNavigationBarType.fixed,
+      items: [
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.cached_outlined,
+              size: 30,
+            ),
+            label: ""),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.savings,
+              size: 30,
+            ),
+            label: ""),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.payment_outlined,
+              size: 30,
+            ),
+            label: ""),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+              size: 30,
+            ),
+            label: ""),
+      ],
+    );
+  }
 
   selectedTab(index) {
     setState(() {
