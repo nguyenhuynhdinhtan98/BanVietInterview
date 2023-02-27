@@ -14,7 +14,7 @@ class _Account extends State<Account> {
   int _currentAccount = 0;
   bool _accountBalanceDisplay = false;
 
-  final PageController _pageController = PageController(viewportFraction: 0.9,initialPage: 1);
+  final PageController _pageController = PageController(viewportFraction: 0.9,initialPage: 0);
 
   _onPageChanged(int index) {
     setState(() {
