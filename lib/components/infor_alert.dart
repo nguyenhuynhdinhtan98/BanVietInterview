@@ -22,7 +22,7 @@ class _InforAlertState extends State<InforAlert> {
           ),
           child: Container(
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+              margin: EdgeInsets.all(8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
