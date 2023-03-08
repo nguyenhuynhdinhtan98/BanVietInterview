@@ -12,5 +12,4 @@ List<AccountData> accounts = [
   AccountData("Tài khoản vãng lai","123.456.789", "500.000", "VND"),
   AccountData("Tài khoản vãng lai","123.456.789", "500.000", "VND"),
   AccountData("Tài khoản vãng lai","123.456.789", "500.000", "VND"),
-
 ];
